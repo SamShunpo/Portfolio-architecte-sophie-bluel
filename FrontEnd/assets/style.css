@@ -137,7 +137,7 @@ table {
 /** end reset css**/
 
 body {
-	max-width: 1140px;
+	max-width: 1440px;
 	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
@@ -149,7 +149,6 @@ header {
 	justify-content: space-between;
 	margin: 50px 0
 }
-
 
 section {
 	margin: 50px 0
@@ -290,7 +289,6 @@ input[type="submit"] {
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	width: 100%;
 	background-color: white;
 	height: 60px;
 	margin-bottom: -50px;
@@ -324,4 +322,51 @@ footer nav ul {
 .btnCategorySelected, .btnCategorySelected:hover {
 	background-color: #1D6154;
 	color: white;
+}
+
+
+/* page login */
+
+.login-section {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	width: 50%;
+	margin-top: 150px;
+	align-content: center;
+	flex-wrap: wrap;
+}
+
+.login-section>* {
+	text-align: center;
+}
+
+.login-section h2 {
+	margin-bottom: 7px;
+}
+
+.login-section form {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	width: 380px;
+}
+
+.login-section input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.login-section label {
+	margin: 30px 0 7px 0;
+}
+
+.login-section a {
+	align-self: center;
+	font-family: 'work sans';
+	font-size: 14px;
+	font-weight: 500;
+	color: #3d3d3d;
 }
