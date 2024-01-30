@@ -15,6 +15,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./assets/scripts/controllers/home.js" type="module"></script>
+	<script src="./assets/scripts/controllers/modale.js" defer></script>
 </head>
 
 <body>
@@ -52,8 +53,11 @@
 		<section id="portfolio">
 			<div class="project-title">
 				<h2>Mes Projets</h2>
-				<button><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+				<button id="open-modal"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
 			</div>
+			<dialog>
+				<h2>test</h2>
+			</dialog>
 			<div class="categories"></div>
 			<div class="gallery">
 			</div>
