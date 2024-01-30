@@ -1,5 +1,8 @@
 import { getWorks, getCategories } from "../services/api.js";
 
+const tokenConsole = window.localStorage.getItem("token");
+console.log(tokenConsole);
+
 const works = await getWorks();
 const categories = await getCategories();
 
@@ -52,9 +55,42 @@ function displayCategories(categories) {
     }
 }
 
+function displayEditMode() {
+    const editMode = document.querySelector(".edit-mode");
+    editMode.style.display = "flex";
+}
+
+function displayEditBtn() {
+    const editBtn = document.querySelector(".project-title button");
+    editBtn.style.display = "flex";
+}
+
+function displayBtnLogin() {
+    const loginBtn = document.querySelector(".login-btn");
+    loginBtn.innerHTML = `<a>logout</a>`;
+    loginBtn.classList.add("logout");
+}
 
 displayWorks(works);
-displayCategories([{ id: 0, name: "Tous" }, ...categories]);
+
+const token = window.localStorage.getItem("token");
+if (!token) {
+    displayCategories([{ id: 0, name: "Tous" }, ...categories]);
+} else {
+    displayEditMode();
+    displayEditBtn();
+    displayBtnLogin();
+
+    const logoutBtn = document.querySelector(".logout");
+    logoutBtn.addEventListener("click", () => {
+        logoutBtn.classList.remove("logout");
+        window.localStorage.removeItem("token");
+        location.reload();
+    })
+}
+
+
+
 
 
 
