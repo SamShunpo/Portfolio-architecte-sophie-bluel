@@ -107,13 +107,34 @@ section {
 	display: block;
 }
 
+.wrapper{
+	max-width: 1440px;
+	margin: auto;
+}
+
 body {
 	line-height: 1;
+	height: 100vh;
 }
 
 ol,
 ul {
 	list-style: none;
+}
+
+li {
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+	font-size: 17px;
+	cursor: pointer;
+}
+
+a:hover{
+	color:#B1663C;
 }
 
 blockquote,
@@ -137,8 +158,6 @@ table {
 /** end reset css**/
 
 body {
-	max-width: 1440px;
-	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
 	background-color: #FFFEF8;
@@ -147,7 +166,8 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
+	padding: 50px 20px 0 20px;
 }
 
 section {
@@ -220,10 +240,6 @@ li:hover {
 	margin-bottom: 0.5em;
 }
 
-#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
-}
 
 .gallery {
 	width: 100%;
@@ -291,7 +307,7 @@ footer nav ul {
 	justify-content: flex-end;
 	background-color: white;
 	height: 60px;
-	margin-bottom: -50px;
+	margin-top: 15%;
 }
 
 .categories {
@@ -322,6 +338,28 @@ footer nav ul {
 .btnCategorySelected, .btnCategorySelected:hover {
 	background-color: #1D6154;
 	color: white;
+}
+
+.project-title{
+	display: flex;
+	justify-content: center;
+}
+
+.project-title button {
+	display: none;
+	background-color: #FFFEF8;
+	border: none;
+	gap: 5px;
+	margin: 10px 0 10px 31px;
+	color: black;
+	font-family: 'Work Sans';
+	font-weight: 400;
+	padding: 0;
+	cursor: pointer;
+}
+
+.project-title button:hover {
+	color: #B1663C;
 }
 
 
@@ -370,3 +408,27 @@ footer nav ul {
 	font-weight: 500;
 	color: #3d3d3d;
 }
+
+.error_message {
+	color: red;
+	text-align: center;
+	font-size: 18px;
+	margin: 5px 0;
+}
+
+.edit-mode {
+	background-color: black;
+	height: 59px;
+	color: white;
+	justify-content: center;
+	display: none;
+	align-items: center;
+	gap: 12px;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.page-login{
+	font-weight: 600;
+}
+
