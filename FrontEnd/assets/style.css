@@ -340,7 +340,7 @@ footer nav ul {
 	color: white;
 }
 
-.project-title{
+.project-title {
 	display: flex;
 	justify-content: center;
 }
@@ -428,7 +428,92 @@ footer nav ul {
 	font-weight: 400;
 }
 
-.page-login{
+.page-login {
 	font-weight: 600;
+}
+
+/* Modal edit */
+
+dialog {
+	border-radius: 10px;
+	border-style: none;
+	padding: 1.6em 6em 2.5em 6em;
+}
+
+::backdrop {
+	background-color: black;
+	opacity: 0.3;
+}
+
+#dialog {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	text-align: center;
+	align-items: center;
+	max-width: 420px;
+}
+
+#dialog h3 {
+	font-size: 26px;
+	font-family: 'Work Sans';
+	font-weight: 400;
+	padding: 10px 0 38px 0;
+}
+
+#dialog button {
+	border-radius: 60px;
+	background-color: #1D6154;
+	border-style: none;
+	color: White;
+	padding: 10px 50px;
+	font-family: 'Syne';
+	font-size: 14px;
+	font-weight: 700;
+	max-width: 237px;
+}
+
+#dialog .line {
+	height: 1px;
+	background-color: #b3b3b3;
+	width: 100%;
+	margin-top: 57px;
+	margin-bottom: 28px;
+}
+
+.gallery-modal {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-column-gap: 7px;
+	grid-row-gap: 25px;
+}
+
+.gallery-modal figure{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.gallery-modal .trash {
+	position: absolute;
+	right: 3%;
+	top: 2%;
+	width: 30%;
+	height: 23%;
+	color: white;
+	border-radius: 2px;
+	padding: 2px;
+	cursor: pointer;
+	
+}
+
+.gallery-modal img {
+	width: 100%;
+}
+
+.hide-modal {
+	position: absolute;
+	right: 30px;
+	cursor: pointer;
 }
 

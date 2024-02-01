@@ -11,11 +11,11 @@
 		rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./assets/scripts/controllers/home.js" type="module"></script>
-	<script src="./assets/scripts/controllers/modale.js" defer></script>
+	<script src="./assets/scripts/controllers/modale.js" defer type="module"></script>
 </head>
 
 <body>
@@ -55,8 +55,15 @@
 				<h2>Mes Projets</h2>
 				<button id="open-modal"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
 			</div>
-			<dialog>
-				<h2>test</h2>
+			<dialog id="modal">
+				<i class="fa-solid fa-xmark fa-xl hide-modal"></i>
+				<div id="dialog">
+					<h3>Galerie photo</h3>
+					<div class="gallery-modal">
+					</div>
+					<div class="line"></div>
+					<button>Ajouter une photo</button>
+				</div>
 			</dialog>
 			<div class="categories"></div>
 			<div class="gallery">
