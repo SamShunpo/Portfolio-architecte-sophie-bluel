@@ -395,6 +395,11 @@ footer nav ul {
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	cursor: pointer;
+}
+
+.login-section .submit-btn:hover {
+	background-color: #1d6154d3;
 }
 
 .login-section label {
@@ -437,7 +442,11 @@ footer nav ul {
 dialog {
 	border-radius: 10px;
 	border-style: none;
-	padding: 1.6em 6em 2.5em 6em;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	max-width: 500px;
+	padding: 0;
 }
 
 ::backdrop {
@@ -446,13 +455,9 @@ dialog {
 }
 
 #dialog {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	text-align: center;
-	align-items: center;
-	max-width: 420px;
+	padding: 20px 50px 30px 50px;
 }
+
 
 #dialog h3 {
 	font-size: 26px;
@@ -515,5 +520,6 @@ dialog {
 	position: absolute;
 	right: 30px;
 	cursor: pointer;
+	margin-top: 20px;
 }
 

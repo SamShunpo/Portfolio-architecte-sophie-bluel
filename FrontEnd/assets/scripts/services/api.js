@@ -1,4 +1,4 @@
-/* index */
+// index 
 
 export async function getWorks() {
     const reponse = await fetch(`http://localhost:5678/api/works`);
@@ -12,19 +12,32 @@ export async function getCategories() {
     return categories
 }
 
-/*login*/
+// login
 
 export async function loginUser(chargeUtile) {
-    const reponse = await fetch("http://localhost:5678/api/users/login", {
+    const response = await fetch("http://localhost:5678/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: chargeUtile
     })
-    if (!reponse.ok) {
-        const errorData = await reponse.json();
+    if (!response.ok) {
+        const errorData = await response.json();
         throw errorData.message;
     } else {
-        const loginData = await reponse.json();
+        const loginData = await response.json();
         return loginData;
     }
+}
+
+// delete works
+
+export async function deleteWork(id, token){
+    const response = await fetch(`http://localhost:5678/api/works/${id}`,{
+        method: "DELETE",
+        headers: {Authorization : `Bearer ${token}`},
+    })
+    if (!response.ok) {
+        const errorData = await response();
+        throw errorData.message;
+    } 
 }

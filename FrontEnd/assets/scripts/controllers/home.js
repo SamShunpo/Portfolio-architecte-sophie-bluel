@@ -1,4 +1,5 @@
 import { getWorks, getCategories } from "../services/api.js";
+import { updateDisplay } from "./modale.js";
 
 const tokenConsole = window.localStorage.getItem("token");
 console.log(tokenConsole);
@@ -14,6 +15,8 @@ function displayWorks(works) {
         const workElement = document.createElement("figure");
         const imageWork = document.createElement("img");
         const figcaptionWork = document.createElement("figcaption");
+        
+        workElement.id = `work${work.id}`;
 
         imageWork.src = work.imageUrl;
         imageWork.alt = work.title;
@@ -89,6 +92,10 @@ if (!token) {
     })
 }
 
+window.addEventListener("deleteElement", function(e){
+    const deleteId = e.detail.deleteId;
+    updateDisplay("work",deleteId);
+})
 
 
 
