@@ -57,13 +57,37 @@
 			</div>
 			<dialog>
 				<i class="fa-solid fa-xmark fa-xl hide-modal"></i>
-				<div id="dialog">
+				<i class="fa-solid fa-arrow-left fa-xl return-arrow"></i>
+				<div id="dialog-delete">
 					<h3>Galerie photo</h3>
 					<div class="gallery-modal">
 					</div>
 					<p class="error_message"></p>
 					<div class="line"></div>
-					<button>Ajouter une photo</button>
+					<button id="add-work-btn">Ajouter une photo</button>
+				</div>
+				<div id="dialog-create">
+					<h3>Ajout photo</h3>
+					<p class="error_message"></p>
+					<form action="#" method="post" id="form-works">
+						<div class="file-uploader">
+							<div class="input-file">
+								<img src="./assets/icons/picture.svg" alt="picture logo">
+								<label for="file-input" class="label-file-input">+ Ajouter photo</label>
+								<input type="file" id="file-input" name="file-input" accept="image/png, image/jpg, image/jpeg">
+								<p>jpg, png : 4mo max</p>
+							</div>
+							<img src="" alt="" id="picture">
+						</div>
+						<label for="titre">Titre</label>
+						<input type="text" name="titre" id="titre">
+						<label for="category">Catégorie</label>
+						<select name="category" id="category">
+							<option value=""></option>
+						</select>
+						<div class="line"></div>
+						<button type="submit">Valider</button>
+					</form>					
 				</div>
 			</dialog>
 			<div class="categories"></div>

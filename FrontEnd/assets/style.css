@@ -437,16 +437,13 @@ footer nav ul {
 	font-weight: 600;
 }
 
-/* Modal edit */
+/* Modal Delete */
 
 dialog {
 	border-radius: 10px;
 	border-style: none;
-	flex-direction: column;
-	text-align: center;
-	align-items: center;
-	max-width: 500px;
 	padding: 0;
+	text-align: center;
 }
 
 ::backdrop {
@@ -454,19 +451,29 @@ dialog {
 	opacity: 0.3;
 }
 
-#dialog {
-	padding: 20px 50px 30px 50px;
+.hide-modal {
+	position: absolute;
+	right: 30px;
+	cursor: pointer;
+	margin-top: 30px;
+}
+
+#dialog-delete {
+	padding: 40px 100px 30px 100px;
+	flex-direction: column;
+	align-items: center;
+	width: 420px;
 }
 
 
-#dialog h3 {
+#dialog-delete h3 {
 	font-size: 26px;
 	font-family: 'Work Sans';
 	font-weight: 400;
 	padding: 10px 0 38px 0;
 }
 
-#dialog button {
+#dialog-delete button {
 	border-radius: 60px;
 	background-color: #1D6154;
 	border-style: none;
@@ -476,9 +483,14 @@ dialog {
 	font-size: 14px;
 	font-weight: 700;
 	max-width: 237px;
+	cursor: pointer;
 }
 
-#dialog .line {
+#dialog-delete button:hover {
+	background-color: #1d6154d3;
+}
+
+#dialog-delete .line {
 	height: 1px;
 	background-color: #b3b3b3;
 	width: 100%;
@@ -516,10 +528,112 @@ dialog {
 	width: 100%;
 }
 
-.hide-modal {
-	position: absolute;
-	right: 30px;
-	cursor: pointer;
-	margin-top: 20px;
+
+/* Modal create */
+
+#dialog-create {
+	display: none;
+	padding: 40px 100px 30px 100px;
+	flex-direction: column;
+	width: 420px;
 }
+
+.return-arrow {
+	position: absolute;
+	left: 30px;
+	cursor: pointer;
+	margin-top: 30px;
+	display: none;
+}
+
+
+#dialog-create h3 {
+	font-size: 26px;
+	font-family: 'Work Sans';
+	font-weight: 400;
+	padding: 10px 0 38px 0;
+}
+
+#dialog-create form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+#dialog-create .file-uploader {
+	background-color: #E8F1F6;
+	border-radius: 3px;
+	margin-bottom: 30px;
+	padding: 20px 0 20px 0;
+}
+
+#dialog-create .input-file {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+#file-input {
+	display: none;
+}
+
+.label-file-input {
+	background-color: #B9C5CC;
+	padding: 10px 30px;
+	border-radius: 50px;
+	color: #306685;
+	font-family: 'work Sans';
+	font-weight: 500;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.label-file-input:hover {
+	color: white;
+}
+
+.input-file p {
+	font-size: 10px;
+}
+
+#picture {
+	height: 170px;
+}
+
+#dialog-create form label {
+	font-weight: 500;
+	font-size: 14px;
+	text-align: start;
+	margin-bottom: 8px;
+}
+
+#dialog-create form input, select {
+	height: 50px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+	margin-bottom: 30px;
+}
+
+#dialog-create .line {
+	height: 1px;
+	background-color: #b3b3b3;
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 28px;
+}
+
+#dialog-create button {
+	border-radius: 60px;
+	background-color: #a7a7a7;
+	border-style: none;
+	color: White;
+	padding: 10px 50px;
+	font-family: 'Syne';
+	font-size: 14px;
+	font-weight: 700;
+	width: 237px;
+	align-self: center;
+}
+
 
