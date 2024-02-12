@@ -1,5 +1,4 @@
 import { getWorks, getCategories } from "../services/api.js";
-import { updateDisplay } from "./modale.js";
 
 const tokenConsole = window.localStorage.getItem("token");
 console.log(tokenConsole);
@@ -92,10 +91,6 @@ if (!token) {
     })
 }
 
-window.addEventListener("deleteElement", function(e){
-    const deleteId = e.detail.deleteId;
-    updateDisplay("work",deleteId);
-})
 
 
 

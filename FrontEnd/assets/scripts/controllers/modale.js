@@ -1,6 +1,7 @@
-import { getWorks, deleteWork, getCategories } from "../services/api.js";
+import { getWorks, deleteWork, getCategories, createWork } from "../services/api.js";
 
 const works = await getWorks();
+const categories = await getCategories();
 
 const dialogElement = document.querySelector("dialog");
 const openModal = document.querySelector("#open-modal");
@@ -85,20 +86,22 @@ returnArrow.addEventListener("click", () => {
 
 // Dropdown create work
 
-const categories = await getCategories();
-const selectButton = document.querySelector("#category");
-for (const category of categories) {
-    const optionCategory = document.createElement("option");
-    optionCategory.value = category.id;
-    optionCategory.innerText = category.name;
-    selectButton.appendChild(optionCategory);
+function dropdownOption(categories) {
+    const selectButton = document.querySelector("#category");
+    for (const category of categories) {
+        const optionCategory = document.createElement("option");
+        optionCategory.value = category.id;
+        optionCategory.innerText = category.name;
+        selectButton.appendChild(optionCategory);
+    }
 }
+
+dropdownOption([{ id: 0, name: "" }, ...categories])
 
 
 // file uploader
 
 const inputPhoto = document.getElementById('file-input');
-const image = document.getElementById('picture');
 const inputContainer = document.querySelector(".input-file");
 const MAX_SIZE = 4000000;
 const ERRORS = {
@@ -127,16 +130,29 @@ function resetInputContainer() {
 inputPhoto.onchange = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
+    const imageContainer = document.querySelector(".picture-container");
+
+    imageContainer.innerHTML="";
 
     resetInputContainer();
 
     if (file.type.match("image.*") && file.size < MAX_SIZE) {
         reader.onload = (e) => {
-            image.src = e.target.result;
+            const imageSelected = document.createElement("img");
+
+            imageSelected.src = e.target.result;
+            imageSelected.classList.add("picture");
+
+            imageContainer.appendChild(imageSelected);
             inputContainer.style.display = "none";
+
+            imageSelected.addEventListener("click", () => {
+                inputPhoto.click();
+            })
         };
 
         reader.readAsDataURL(file);
+
     } else {
         if (!file.type.match("image.*")) {
             showError(ERRORS.format);
@@ -147,9 +163,7 @@ inputPhoto.onchange = (event) => {
     }
 };
 
-image.addEventListener("click", () => {
-    inputPhoto.click();
-})
+
 
 
 // reset form
@@ -159,10 +173,33 @@ function resetForm(form) {
 }
 
 function changeModal(form) {
+    const imageContainer= document.querySelector(".picture-container");
+
     resetForm(form);
     resetInputContainer()
     deleteDiv.style.display = "flex";
     createDiv.style.display = "none";
-    image.src = "";
+    imageContainer.innerHTML = "";
     inputContainer.style.display = "flex";
 }
+
+// create Work
+
+const createForm = document.querySelector("#form-works");
+
+createForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const work = {
+        title: event.target.querySelector("[name=titre]").value,
+        imageUrl: "http://localhost:5678/images/le-coteau-cassis1707751576449.png",
+        categoryId: event.target.querySelector("[name=category]").value,
+    };
+    const chargeUtile = JSON.stringify(work);
+    console.log(chargeUtile)
+    try {
+        await createWork(window.localStorage.getItem("token"), chargeUtile)
+    } catch (error) {
+        const errorMessage = document.querySelector(".error_message");
+        errorMessage.innerText = error
+    }
+})

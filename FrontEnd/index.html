@@ -10,12 +10,10 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
 		rel="stylesheet">
 	<meta name="description" content="">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="./assets/scripts/controllers/home.js" type="module"></script>
-	<script src="./assets/scripts/controllers/modale.js" defer type="module"></script>
+	<script src="./assets/scripts/controllers/modale.js" type="module"></script>
 </head>
 
 <body>
@@ -77,15 +75,15 @@
 								<input type="file" id="file-input" name="file-input" accept="image/png, image/jpg, image/jpeg">
 								<p>jpg, png : 4mo max</p>
 							</div>
-							<img src="" alt="" id="picture">
+							<div class="picture-container"></div>
 						</div>
 						<label for="titre">Titre</label>
 						<input type="text" name="titre" id="titre">
 						<label for="category">Catégorie</label>
 						<select name="category" id="category">
-							<option value=""></option>
 						</select>
 						<div class="line"></div>
+						<p class="error_message"></p>
 						<button type="submit">Valider</button>
 					</form>					
 				</div>

@@ -31,13 +31,33 @@ export async function loginUser(chargeUtile) {
 
 // delete works
 
-export async function deleteWork(id, token){
-    const response = await fetch(`http://localhost:5678/api/works/${id}`,{
+export async function deleteWork(id, token) {
+    const response = await fetch(`http://localhost:5678/api/works/${id}`, {
         method: "DELETE",
-        headers: {Authorization : `Bearer ${token}`},
+        headers: { Authorization: `Bearer ${token}` },
     })
     if (!response.ok) {
         const errorData = await response();
         throw errorData.message;
-    } 
+    }
+}
+
+// create works
+
+export async function createWork(token, chargeUtile) {
+    const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: chargeUtile
+    })
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw errorData.message;
+    } else {
+        const loginData = await response.json();
+        return loginData;
+    }
 }
