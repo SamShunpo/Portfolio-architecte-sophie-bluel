@@ -72,20 +72,22 @@
 							<div class="input-file">
 								<img src="./assets/icons/picture.svg" alt="picture logo">
 								<label for="file-input" class="label-file-input">+ Ajouter photo</label>
-								<input type="file" id="file-input" name="file-input" accept="image/png, image/jpg, image/jpeg">
+								<input type="file" id="file-input" name="image"
+									accept="image/png, image/jpg, image/jpeg">
 								<p>jpg, png : 4mo max</p>
 							</div>
 							<div class="picture-container"></div>
 						</div>
 						<label for="titre">Titre</label>
-						<input type="text" name="titre" id="titre">
+						<input type="text" name="title" id="title">
 						<label for="category">Catégorie</label>
 						<select name="category" id="category">
 						</select>
 						<div class="line"></div>
 						<p class="error_message"></p>
 						<button type="submit">Valider</button>
-					</form>					
+					</form>
+					<div id="output"></div>
 				</div>
 			</dialog>
 			<div class="categories"></div>

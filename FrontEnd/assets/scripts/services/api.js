@@ -1,9 +1,11 @@
-// index 
+import { Work } from "../models/Work.js";
 
 export async function getWorks() {
     const reponse = await fetch(`http://localhost:5678/api/works`);
     const works = await reponse.json();
-    return works
+    return works.map((work)=>{
+        return new Work(work)
+    }) 
 }
 
 export async function getCategories() {
@@ -37,27 +39,23 @@ export async function deleteWork(id, token) {
         headers: { Authorization: `Bearer ${token}` },
     })
     if (!response.ok) {
-        const errorData = await response();
+        const errorData = await response.json();
         throw errorData.message;
     }
 }
 
 // create works
 
-export async function createWork(token, chargeUtile) {
+export async function createWork(form, token) {
     const response = await fetch("http://localhost:5678/api/works", {
         method: "POST",
-        headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-        },
-        body: chargeUtile
+        headers: { Authorization: `Bearer ${token}`},
+        body: form,
     })
     if (!response.ok) {
         const errorData = await response.json();
         throw errorData.message;
-    } else {
-        const loginData = await response.json();
-        return loginData;
     }
+    return new Work(await response.json());
+
 }

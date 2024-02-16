@@ -11,20 +11,8 @@ function displayWorks(works) {
     const gallery = document.querySelector(".gallery");
     gallery.innerHTML = null;
     for (const work of works) {
-        const workElement = document.createElement("figure");
-        const imageWork = document.createElement("img");
-        const figcaptionWork = document.createElement("figcaption");
-        
-        workElement.id = `work${work.id}`;
 
-        imageWork.src = work.imageUrl;
-        imageWork.alt = work.title;
-
-        figcaptionWork.innerText = work.title;
-
-        workElement.appendChild(imageWork);
-        workElement.appendChild(figcaptionWork);
-        gallery.appendChild(workElement);
+        gallery.appendChild(work.getHtml());
     }
 }
 
