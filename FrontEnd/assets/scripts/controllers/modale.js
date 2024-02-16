@@ -1,4 +1,4 @@
-import { getWorks, deleteWork, getCategories, createWork } from "../services/api.js";
+import { getWorks, deleteWork, getCategories, createWork} from "../services/api.js";
 
 const works = await getWorks();
 const categories = await getCategories();
@@ -132,7 +132,7 @@ inputPhoto.onchange = (event) => {
     const reader = new FileReader();
     const imageContainer = document.querySelector(".picture-container");
 
-    imageContainer.innerHTML="";
+    imageContainer.innerHTML = "";
 
     resetInputContainer();
 
@@ -173,7 +173,7 @@ function resetForm(form) {
 }
 
 function changeModal(form) {
-    const imageContainer= document.querySelector(".picture-container");
+    const imageContainer = document.querySelector(".picture-container");
 
     resetForm(form);
     resetInputContainer()
@@ -185,21 +185,27 @@ function changeModal(form) {
 
 // create Work
 
-const createForm = document.querySelector("#form-works");
 
-createForm.addEventListener("submit", async function (event) {
-    event.preventDefault();
-    const work = {
-        title: event.target.querySelector("[name=titre]").value,
-        imageUrl: "http://localhost:5678/images/le-coteau-cassis1707751576449.png",
-        categoryId: event.target.querySelector("[name=category]").value,
-    };
-    const chargeUtile = JSON.stringify(work);
-    console.log(chargeUtile)
+const form = document.getElementById("form-works");
+
+form.addEventListener("submit", async (event) => {
+    event.preventDefault()
+    const formData = new FormData()
+    const title = document.querySelector("#title").value;
+    const image = document.querySelector("#file-input").files[0];
+    const category = document.querySelector("#category").value;
+
+    formData.append("title",title);
+    formData.append("image",image);
+    formData.append("category",parseInt(category));
+
     try {
-        await createWork(window.localStorage.getItem("token"), chargeUtile)
+        const work = await createWork(formData, window.localStorage.getItem("token"));
+
+        const gallery = document.querySelector(".gallery");
+        gallery.appendChild(work.getHtml());
+
     } catch (error) {
-        const errorMessage = document.querySelector(".error_message");
-        errorMessage.innerText = error
+        // todo gérer l'erreur
     }
 })
