@@ -1,5 +1,5 @@
 import { Category } from "../models/Category.js";
-import { getWorks, deleteWork, getCategories, createWork} from "../services/api.js";
+import { getWorks, deleteWork, getCategories, createWork } from "../services/api.js";
 
 const works = await getWorks();
 const categories = await getCategories();
@@ -28,10 +28,28 @@ function displayWorksModale(works) {
     const gallery = document.querySelector(".gallery-modal");
     gallery.innerHTML = null;
     for (const work of works) {
+        const { workElement, imageTrash } = work.createWorkElementModale()
+        gallery.appendChild(workElement);
 
-        gallery.appendChild(work.createWorkElementModale());
+        imageTrash.addEventListener("click", async function (event) {
+            event.preventDefault();
+            try {
+                await deleteWork(this.id, window.localStorage.getItem("token"))
+            } catch (error) {
+                const errorMessage = document.querySelector(".error_message");
+                errorMessage.innerText = error
+            }
+            updateDisplay("modal", this.id)
+            updateDisplay("work", this.id)
+        })
     }
 }
+
+function updateDisplay(name, id) {
+    const workDelete = document.getElementById(`${name}${id}`);
+    workDelete.parentNode.removeChild(workDelete);
+}
+
 
 displayWorksModale(works);
 
@@ -55,13 +73,13 @@ returnArrow.addEventListener("click", () => {
 
 // Dropdown create work
 
-const defaultCategory = new Category({id:0, name:""})
+const defaultCategory = new Category({ id: 0, name: "" })
 
 function dropdownOption(categories) {
     const selectButton = document.querySelector("#category");
     for (const category of categories) {
 
-        selectButton.appendChild(category.getCategories());
+        selectButton.appendChild(category.getCategoryOptionElement());
     }
 }
 
@@ -164,9 +182,9 @@ form.addEventListener("submit", async (event) => {
     const image = document.querySelector("#file-input").files[0];
     const category = document.querySelector("#category").value;
 
-    formData.append("title",title);
-    formData.append("image",image);
-    formData.append("category",parseInt(category));
+    formData.append("title", title);
+    formData.append("image", image);
+    formData.append("category", parseInt(category));
 
     try {
         const work = await createWork(formData, window.localStorage.getItem("token"));
@@ -175,9 +193,14 @@ form.addEventListener("submit", async (event) => {
         const galleryModal = document.querySelector(".gallery-modal");
 
         gallery.appendChild(work.createWorkElement());
-        galleryModal.appendChild(work.createWorkElementModale());
+
+        const { workElement } = work.createWorkElementModale()
+        galleryModal.appendChild(workElement);
+
+        dialogElement.close()
 
     } catch (error) {
-        // todo gérer l'erreur
+        //const errorMessage = document.querySelector("#output")
     }
 })
+

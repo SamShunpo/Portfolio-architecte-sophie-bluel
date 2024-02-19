@@ -1,4 +1,3 @@
-import { deleteWork } from "../services/api.js"
 export class Work {
     id
     title
@@ -46,26 +45,11 @@ export class Work {
         imageTrash.id = this.id;
         imageTrash.classList.add("trash");
 
-        imageTrash.addEventListener("click", async function (event) {
-            event.preventDefault();
-            try {
-                await deleteWork(this.id, window.localStorage.getItem("token"))
-            } catch (error) {
-                const errorMessage = document.querySelector(".error_message");
-                errorMessage.innerText = error
-            }
-            updateDisplay("modal", this.id)
-            updateDisplay("work", this.id)
-        })
+    
 
         workElement.appendChild(imageTrash);
         workElement.appendChild(imageWork);
 
-        return workElement
+        return {workElement, imageTrash}
     }
-}
-
-function updateDisplay(name, id) {
-    const workDelete = document.getElementById(`${name}${id}`);
-    workDelete.parentNode.removeChild(workDelete);
 }
