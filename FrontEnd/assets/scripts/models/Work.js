@@ -45,8 +45,6 @@ export class Work {
         imageTrash.id = this.id;
         imageTrash.classList.add("trash");
 
-    
-
         workElement.appendChild(imageTrash);
         workElement.appendChild(imageWork);
 
