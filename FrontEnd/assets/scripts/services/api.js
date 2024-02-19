@@ -1,4 +1,5 @@
 import { Work } from "../models/Work.js";
+import { Category } from "../models/Category.js";
 
 export async function getWorks() {
     const reponse = await fetch(`http://localhost:5678/api/works`);
@@ -11,7 +12,9 @@ export async function getWorks() {
 export async function getCategories() {
     const reponse = await fetch(`http://localhost:5678/api/categories`);
     const categories = await reponse.json();
-    return categories
+    return categories.map((category)=>{
+        return new Category(category)
+    })
 }
 
 // login

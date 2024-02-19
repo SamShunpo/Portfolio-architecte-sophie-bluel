@@ -1,3 +1,4 @@
+import { Category } from "../models/Category.js";
 import { getWorks, deleteWork, getCategories, createWork} from "../services/api.js";
 
 const works = await getWorks();
@@ -27,44 +28,12 @@ function displayWorksModale(works) {
     const gallery = document.querySelector(".gallery-modal");
     gallery.innerHTML = null;
     for (const work of works) {
-        const workElement = document.createElement("figure");
-        const imageWork = document.createElement("img");
-        const imageTrash = document.createElement("img");
 
-        workElement.id = `modal${work.id}`;
-
-        imageWork.src = work.imageUrl;
-        imageWork.alt = work.title;
-
-        imageTrash.src = "./assets/icons/trash.svg";
-        imageTrash.id = work.id;
-        imageTrash.classList.add("trash");
-
-        imageTrash.addEventListener("click", async function (event) {
-            event.preventDefault();
-            try {
-                await deleteWork(work.id, window.localStorage.getItem("token"))
-            } catch (error) {
-                const errorMessage = document.querySelector(".error_message");
-                errorMessage.innerText = error
-            }
-            updateDisplay("modal", work.id)
-            updateDisplay("work", work.id)
-        })
-
-        workElement.appendChild(imageTrash);
-        workElement.appendChild(imageWork);
-        gallery.appendChild(workElement);
+        gallery.appendChild(work.createWorkElementModale());
     }
 }
 
 displayWorksModale(works);
-
-// Delete Work
-function updateDisplay(name, id) {
-    const workDelete = document.getElementById(`${name}${id}`);
-    workDelete.parentNode.removeChild(workDelete);
-}
 
 // Create Work change screen
 
@@ -86,17 +55,17 @@ returnArrow.addEventListener("click", () => {
 
 // Dropdown create work
 
+const defaultCategory = new Category({id:0, name:""})
+
 function dropdownOption(categories) {
     const selectButton = document.querySelector("#category");
     for (const category of categories) {
-        const optionCategory = document.createElement("option");
-        optionCategory.value = category.id;
-        optionCategory.innerText = category.name;
-        selectButton.appendChild(optionCategory);
+
+        selectButton.appendChild(category.getCategories());
     }
 }
 
-dropdownOption([{ id: 0, name: "" }, ...categories])
+dropdownOption([defaultCategory, ...categories])
 
 
 // file uploader
@@ -203,7 +172,7 @@ form.addEventListener("submit", async (event) => {
         const work = await createWork(formData, window.localStorage.getItem("token"));
 
         const gallery = document.querySelector(".gallery");
-        gallery.appendChild(work.getHtml());
+        gallery.appendChild(work.createWorkElement());
 
     } catch (error) {
         // todo gérer l'erreur
