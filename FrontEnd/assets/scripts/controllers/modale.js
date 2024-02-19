@@ -210,7 +210,7 @@ form.addEventListener("submit", async (event) => {
 
     } catch (error) {
         const errorMessage = document.querySelector("#output")
-        
+        errorMessage.innerText = error
     }
 })
 
@@ -219,7 +219,9 @@ form.addEventListener("submit", async (event) => {
 
 function resetForm(form) {
     const submitButton = document.querySelector("#submit-form");
-
+    const errorMessage = document.querySelector("#output")
+        
+    errorMessage.innerText = ""
     submitButton.disabled = true;
     document.getElementById(form).reset();
 

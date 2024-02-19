@@ -644,3 +644,10 @@ dialog {
 	background-color: #afafaf;
 	cursor: pointer;
 } 
+
+#output {
+	color: red;
+	text-align: center;
+	font-size: 18px;
+	margin: 5px 0;
+}
