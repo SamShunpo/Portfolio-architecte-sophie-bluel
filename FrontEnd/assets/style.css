@@ -328,6 +328,7 @@ footer nav ul {
 	color: #1D6154;
 	padding: 9px 10px;
 	min-width: 100px;
+	cursor: pointer;
 }
 
 .btnCategory:hover {
@@ -638,11 +639,14 @@ dialog {
 #dialog-create button:enabled {
 	background-color: #1D6154;
 	cursor: pointer;
-} 
+}
+
+#dialog-create button:enabled:hover {
+	background-color: #1D6154d3;
+}
 
 #dialog-create button:disabled {
 	background-color: #afafaf;
-	cursor: pointer;
 } 
 
 #output {

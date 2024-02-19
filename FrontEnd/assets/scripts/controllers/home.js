@@ -74,8 +74,21 @@ if (!token) {
     })
 }
 
+const contactButton = document.querySelector("#contact-btn");
 
+contactButton.addEventListener("click", () => {
+    document.querySelector("#contact").scrollIntoView({
+        behavior: "smooth"
+    })
+})
 
+const projectsButton = document.querySelector("#project-btn");
+
+projectsButton.addEventListener("click", () => {
+    document.querySelector("#portfolio").scrollIntoView({
+        behavior: "smooth"
+    })
+})
 
 
 
