@@ -1,3 +1,4 @@
+import { Category } from "../models/Category.js";
 import { getWorks, getCategories } from "../services/api.js";
 
 const tokenConsole = window.localStorage.getItem("token");
@@ -19,14 +20,8 @@ function displayWorks(works) {
 function displayCategories(categories) {
     const categoriesContainer = document.querySelector(".categories");
     for (const category of categories) {
-        const btnCategory = document.createElement("button");
-        btnCategory.innerText = category.name;
+        const btnCategory = category.getCategoryButtonElement()
         categoriesContainer.appendChild(btnCategory);
-
-        btnCategory.classList = "btnCategory";
-        if (category.id == 0) {
-            btnCategory.classList.add("btnCategorySelected");
-        }
 
         btnCategory.addEventListener("click", () => {
             const buttons = document.querySelectorAll(".btnCategory");
@@ -65,7 +60,7 @@ displayWorks(works);
 
 const token = window.localStorage.getItem("token");
 if (!token) {
-    displayCategories([{ id: 0, name: "Tous" }, ...categories]);
+    displayCategories([new Category({ id: 0, name: "Tous" }), ...categories]);
 } else {
     displayEditMode();
     displayEditBtn();
