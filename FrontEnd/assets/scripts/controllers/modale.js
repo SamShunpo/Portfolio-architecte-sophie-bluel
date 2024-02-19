@@ -172,7 +172,10 @@ form.addEventListener("submit", async (event) => {
         const work = await createWork(formData, window.localStorage.getItem("token"));
 
         const gallery = document.querySelector(".gallery");
+        const galleryModal = document.querySelector(".gallery-modal");
+
         gallery.appendChild(work.createWorkElement());
+        galleryModal.appendChild(work.createWorkElementModale());
 
     } catch (error) {
         // todo gérer l'erreur
