@@ -6,14 +6,14 @@ export class Work {
     userId
 
     constructor(workJson){
-       this.id = workJson.id
-       this.title = workJson.title
-       this.imageUrl = workJson.imageUrl
-       this.categoryId = workJson.categoryId
-       this.userId = workJson.userId
+       this.id = workJson.id;
+       this.title = workJson.title;
+       this.imageUrl = workJson.imageUrl;
+       this.categoryId = workJson.categoryId;
+       this.userId = workJson.userId;
     }
 
-    getHtml(){
+    createWorkElement(){
         const workElement = document.createElement("figure");
         const imageWork = document.createElement("img");
         const figcaptionWork = document.createElement("figcaption");
