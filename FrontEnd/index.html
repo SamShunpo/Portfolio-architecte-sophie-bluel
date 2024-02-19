@@ -79,13 +79,13 @@
 							<div class="picture-container"></div>
 						</div>
 						<label for="titre">Titre</label>
-						<input type="text" name="title" id="title">
+						<input type="text" required name="title" id="title">
 						<label for="category">Catégorie</label>
-						<select name="category" id="category">
+						<select name="category" id="category" required>
 						</select>
 						<div class="line"></div>
 						<p class="error_message"></p>
-						<button type="submit">Valider</button>
+						<button type="submit" id="submit-form" disabled>Valider</button>
 					</form>
 					<div id="output"></div>
 				</div>

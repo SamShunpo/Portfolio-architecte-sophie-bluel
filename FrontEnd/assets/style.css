@@ -623,9 +623,8 @@ dialog {
 	margin-bottom: 28px;
 }
 
-#dialog-create button {
+#dialog-create button{
 	border-radius: 60px;
-	background-color: #a7a7a7;
 	border-style: none;
 	color: White;
 	padding: 10px 50px;
@@ -636,4 +635,12 @@ dialog {
 	align-self: center;
 }
 
+#dialog-create button:enabled {
+	background-color: #1D6154;
+	cursor: pointer;
+} 
 
+#dialog-create button:disabled {
+	background-color: #afafaf;
+	cursor: pointer;
+} 
