@@ -12,7 +12,7 @@ function displayWorks(works) {
     gallery.innerHTML = null;
     for (const work of works) {
 
-        gallery.appendChild(work.getHtml());
+        gallery.appendChild(work.createWorkElement());
     }
 }
 
