@@ -28,7 +28,7 @@ function displayWorksModale(works) {
     const gallery = document.querySelector(".gallery-modal");
     gallery.innerHTML = null;
     for (const work of works) {
-        const { workElement, imageTrash} = work.createWorkElementModale()
+        const {workElement, imageTrash} = work.createWorkElementModale()
         gallery.appendChild(workElement);
 
         trashImage(work, window.localStorage.getItem("token"), imageTrash)
@@ -136,12 +136,12 @@ inputPhoto.onchange = (event) => {
     } else {
         if (!file.type.match("image.*")) {
             showError(ERRORS.format);
-            inputPhotoValidity = false
         }
         if (file.size >= MAX_SIZE) {
             showError(ERRORS.size);
-            inputPhotoValidity = false
+            
         }
+        inputPhotoValidity = false
     }
 };
 
